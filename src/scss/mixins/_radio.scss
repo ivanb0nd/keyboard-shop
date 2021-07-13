@@ -1,0 +1,38 @@
+@mixin custom-radio {
+  position: relative;
+  display: inline-flex;
+  &__field {
+    appearance: none;
+    position: absolute;
+  }
+
+  &__content {
+    padding: 4px 10px;
+    background-color: var(--color-main);
+    color: var(--color-black);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out 0s;
+
+    @include desktop {
+      &:hover{
+        background-color: var(--color-main-hover);
+      }
+    }
+  }
+}
+
+.custom-radio__field:checked + .custom-radio__content{
+  background: var(--color-header);
+  color: var(--color-main);
+}
+
+.custom-radio__field:focus + .custom-radio__content {
+  outline: 1px solid var(--color-nevada);
+  outline-offset: 2px;
+}
+
+.custom-radio__field:disabled + .custom-radio__content {
+  opacity: 0.4;
+  pointer-events: none;
+}

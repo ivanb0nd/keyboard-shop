@@ -1,0 +1,117 @@
+@import '../mixins';
+
+.search-bar {
+  background-color: var(--color-header);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1200;
+  align-items: center;
+  padding: 0 var(--medium-offset);
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out 0s;
+
+  &__left {
+    grid-column: 11 span;
+  }
+
+  &__input {
+    grid-column: 11 span;
+    padding: 0px 15px;
+    border: 0;
+    background-color: var(--color-search-input);
+    color: var(--color-main);
+    border-radius: 5px;
+    &::placeholder{
+      color: var(--color-main-hover);
+
+    }
+
+    @include mobile{
+      grid-column: 10 span;
+    }
+  }
+
+  &__btn {
+    grid-column: 1 span;
+    justify-self: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: var(--color-main);
+    transition: fill 0.3s ease-in-out 0s;
+    svg{
+      width: 25px;
+      height: 25px;
+      object-fit: cover;
+    }
+
+    @include desktop{
+      &:hover{
+        fill: var(--color-main-hover);
+      }
+    }
+
+    @include mobile{
+      grid-column: 2 span;
+    }
+  }
+
+  &__right {
+    grid-column: 1 span;
+    justify-self: center;
+  }
+
+  &__close {
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    &::after,
+    &::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 25px;
+      height: 3px;
+      background-color: var(--color-main);
+      transition: background-color 0.3s ease-in-out 0s;
+    }
+
+    &::after{
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &::before{
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+
+    @include desktop{
+      &:hover{
+        &::after,
+        &::before{
+          background-color: var(--color-main-hover);
+        }
+      }
+    }
+  }
+}
+
+.search-bar__input:focus::placeholder{
+  transform: translateX(-100%);
+}
+
+.search-bar.active {
+  pointer-events: all;
+  transform: translateY(0%);
+}

@@ -1,0 +1,230 @@
+@import 'mixins';
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: Arial ,"Helvetica Neue", sans-serif;
+  height: 100%;
+  width: 100%;
+  color: var(--color-main);
+  background-color: var(--color-background);
+  font: var(--default-font);
+}
+
+button{
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+.is-outer {
+  position: relative !important; // stylelint-disable-line declaration-no-important
+  left: -9999px !important; // stylelint-disable-line declaration-no-important
+}
+
+.site-container {
+  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.is-hidden {
+  display: none !important; // stylelint-disable-line declaration-no-important
+}
+
+.for-mobile {
+  display: none;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.error {
+  border: 2px #ff4019 solid !important; // stylelint-disable-line declaration-no-important
+}
+
+
+.btn-reset {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--container-indent);
+  max-width: 1200px;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}
+
+
+.main {
+  flex: 1 1 auto;
+}
+
+
+// Buttons settings
+
+.btn {
+  padding: 10px 20px;
+  background-color: var(--color-nevada);
+  border-radius: 5px;
+  text-transform: uppercase;
+  font: var(--prehigh-font);
+  color: var(--color-main);
+  transition: all 0.3s ease 0s;
+
+  @include desktop {
+    &:hover{
+      background-color: var(--color-nevada-hover);
+    }
+  }
+
+
+  &--transparent{
+    font: var(--default-font);
+    background-color: transparent;
+    color: #999;
+    border: 2px solid var(--color-header);
+
+    @include desktop {
+      &:hover{
+        background-color: var(--color-accent);
+        color: var(--color-main);
+      }
+    }
+  }
+
+
+
+
+}
+
+
+.arrow {
+  width: 12px;
+  height: 6px;
+  transition: all 0.3s ease-in-out 0s;
+
+
+  svg{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Класс для скрытия объекта
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+
+// custom-checkbox, radio
+
+.custom-checkbox {
+  @include custom-checkbox;
+}
+
+.custom-radio {
+  @include custom-radio;
+}
+
+.filter-switcher {
+  @include filter-switcher;
+}
+
+// section title
+
+.section-title {
+  margin: var(--main-offset) 0;
+  font: var(--title-font);
+}
+
+
+// overlay settings
+
+.overlay{
+  position: fixed;
+  background-color: #00000098;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out 0s, visibility 0.6s ease-in-out 0s;
+}
+
+.overlay.search-active {
+  z-index: 1050;
+  visibility: visible;
+  opacity: 1;
+}
+
+.overlay.cart-active {
+  z-index: 1150;
+  visibility: visible;
+  opacity: 1;
+}
+// Блокировка скролла для body
+
+body.lock {
+  overflow: hidden;
+}

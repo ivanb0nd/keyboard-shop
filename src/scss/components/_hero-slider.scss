@@ -1,0 +1,146 @@
+@import '../mixins';
+
+.hero-slider {
+  position: relative;
+
+  &__item {
+    --slider-item-heihgt: 485px;
+    position: relative;
+    height: var(--slider-item-heihgt);
+
+    @include small-tablet {
+      --slider-item-heihgt: 385px;
+    }
+
+    @include mobile {
+      --slider-item-heihgt: 285px;
+    }
+  }
+
+  &__image {
+
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+  }
+
+  &__info {
+    display: inline-block;
+    transform: translate(0%, -30%);
+    opacity: 0;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: transform 0.6s ease-in-out 0.4s, opacity 0.6s ease-in-out 0.4s;
+
+    @include tablet {
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    @include mobile {
+      align-items: center;
+      padding: 10px;
+      top: 20px;
+      right: 50%;
+      transform: translate(50%, -30%);
+
+
+    }
+  }
+
+  &__btn {
+    box-shadow: 1px 1px 5px black;
+    padding: 10px 15px;
+
+    @include tablet {
+
+      padding: 5px 10px;
+    }
+  }
+
+  &__text {
+    font: var(--slider-text);
+    text-shadow: 1px 1px 5px black;
+    margin-bottom: var(--small-offset);
+  }
+}
+
+
+
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.hero-slider .slick-dots {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  z-index: 1010;
+  transition: all 0.3s ease-in-out 0s;
+  transform: translateX(50%);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  overflow: hidden;
+
+}
+
+.hero-slider .slick-dots li {
+  display: inline-flex;
+  list-style: none;
+  padding: 13px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out 0s;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  @include desktop {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.65);
+    }
+  }
+
+}
+
+.hero-slider .slick-dots li.slick-active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hero-slider .slick-dots li.slick-active button {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-slider .slick-dots button {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.hero-slider__item.slick-active .hero-slider__info {
+  opacity: 1;
+  transform: translate(0%, 0%);
+
+  @include mobile {
+    transform: translate(50%, 0%);
+  }
+}

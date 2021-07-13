@@ -1,0 +1,404 @@
+@import '../mixins';
+
+.cart {
+
+  &__btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: var(--color-main);
+    transition: fill 0.3s ease-in-out 0s;
+
+    svg {
+      width: 32px;
+      height: 26px;
+      object-fit: cover;
+    }
+
+    @include desktop {
+      &:hover {
+        fill: var(--color-main-hover);
+      }
+    }
+  }
+
+  &__count {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 24px;
+    right: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    font: var(--counter-number);
+    background-color: var(--color-nevada);
+    color: var(--color-main);
+
+
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 35%;
+    background-color: var(--color-cart);
+    transition: transform 0.3s ease-in-out 0s, width 0.3s ease-in-out 0s;
+    transform: translateX(100%);
+    z-index: 1200;
+
+    @media (max-width: 1500px) {
+      width: 50%;
+    }
+
+    @include tablet {
+      width: 70%;
+    }
+
+    @include small-tablet {
+      width: 100%;
+    }
+
+  }
+
+  &__close {
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-nevada);
+    border-radius: 100%;
+    transition: background-color 0.3s ease-in-out 0s;
+
+    &::after,
+    &::before {
+      content: '';
+      width: 15px;
+      height: 3px;
+      background-color: var(--color-cart);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      @include mobile {
+        width: 13px;
+        height: 3px;
+      }
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @include desktop {
+      &:hover {
+        background-color: var(--color-nevada-hover);
+      }
+    }
+
+    @include mobile {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &__title {
+    font: var(--hight-bold-font);
+    text-align: center;
+    padding: var(--medium-offset) var(--main-offset);
+    background-color: var(--color-cart-side);
+  }
+
+  &__list {
+    overflow-Y: scroll;
+    padding: var(--medium-offset) 0;
+  }
+
+  &__item {
+    transition: background-color 0.2s ease-in-out 0s;
+
+    @include desktop {
+      &:hover {
+        background-color: var(--color-cart-hover);
+      }
+    }
+
+    @include mobile {
+      margin-top: -2px;
+      border-top: 2px solid var(--color-cart-hover);
+      border-bottom: 2px solid var(--color-cart-hover);
+
+      &:first-child{
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-cart-side);
+    padding: var(--small-offset) var(--second-offset);
+
+    @include mobile {
+      padding: var(--small-offset) var(--small-offset);
+      flex-direction: column;
+
+    }
+  }
+
+  &__fullprice {
+    font: var(--hight-bold-font);
+
+    @include mobile {
+      margin-bottom: var(--small-offset);
+    }
+  }
+
+  &__order-btn {
+    font: var(--default-font);
+    color: var(--color-main);
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid var(--color-nevada);
+    transition: background-color 0.3s ease-in-out 0s;
+
+    @include desktop {
+      &:hover {
+        background-color: var(--color-nevada);
+      }
+    }
+
+    @include mobile {
+      padding: 5px 10px;
+      width: 100%;
+    }
+  }
+}
+
+.cart__content.active {
+  transform: translateX(0%);
+}
+
+.cart-product {
+  display: flex;
+  align-items: stretch;
+  gap: var(--medium-offset);
+  padding: var(--small-offset) var(--second-offset);
+
+  &__left {
+    flex: 0 0 40%;
+
+    @include mobile {
+      flex: 1 1 100%;
+    }
+  }
+
+  &__right {
+    flex: 0 0 60%;
+    display: flex;
+
+    @include mobile {
+      flex: 1 1 100%;
+    }
+  }
+
+  &__img {
+    height: 140px;
+    border-radius: 20px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+
+    @include big-desktop {
+      height: 240px;
+    }
+
+    @include mobile {
+      height: 200px;
+    }
+
+  }
+
+  &__info {
+    flex: 0 0 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include mobile {
+      flex: 1 1 80%;
+      gap: var(--medium-offset);
+    }
+  }
+
+  &__title {
+    font: var(--card-title);
+    margin: 0;
+    transition: font-size 0.3s ease-in-out 0s;
+
+    @include big-desktop {
+      font-size: 28px;
+      margin-bottom: var(--small-offset);
+    }
+
+
+  }
+
+  &__price {
+    font: var(--hight-bold-font);
+    transition: font-size 0.3s ease-in-out 0s;
+
+    @include big-desktop {
+      font-size: 24px;
+      margin-bottom: var(--small-offset);
+    }
+  }
+
+  &__delete {
+    flex: 1 1 30%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+    @include mobile {
+      flex: 1 1 20%;
+    }
+  }
+
+  &__delete-btn {
+    width: 40px;
+    height: 40px;
+    fill: var(--color-nevada);
+    transition: fill 0.3s ease-in-out 0s, height 0.3s ease-in-out, width 0.3s ease-in-out;
+    padding: 0;
+    display: block;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include big-desktop {
+      width: 60px;
+      height: 60px;
+    }
+
+    @include desktop {
+      &:hover {
+        fill: var(--color-nevada-hover);
+      }
+    }
+  }
+
+  @include mobile {
+    padding: var(--medium-offset);
+    flex-wrap: wrap;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--small-offset);
+
+  &__input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font: var(--hight-bold-font);
+    color: var(--color-main);
+    background-color: transparent;
+    border: none;
+    transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
+
+    @include big-desktop {
+      font-size: 24px;
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+.counter-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-accent);
+  border-radius: 100%;
+  transition: background-color 0.3s ease-in-out 0s, height 0.3s ease-in-out, width 0.3s ease-in-out;
+
+  &__minus {
+    &::after {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background-color: var(--color-main);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__plus {
+
+    &::after,
+    &::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background-color: var(--color-main);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+
+  @include big-desktop {
+    width: 60px;
+    height: 60px;
+  }
+}

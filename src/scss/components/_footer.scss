@@ -1,0 +1,120 @@
+@import '../mixins';
+
+.footer {
+  background-color: var(--color-accent);
+  padding: var(--second-offset) 0px var(--medium-offset) 0px;
+
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0 0 var(--second-offset) 0;
+    font: var(--prehigh-font);
+    color: var(--color-nevada);
+    text-align: center;
+  }
+
+  &__hr {
+    width: 100%;
+    margin: 0 0 var(--medium-offset) 0;
+    height: 1px;
+    border: none;
+    border-bottom: 1px solid var(--color-nevada);
+  }
+
+  &__copy {
+    font: var(--default-font);
+    color: var(--color-nevada);
+
+  }
+}
+
+
+.mailing {
+
+  &__form {
+    display: flex;
+    max-width: 780px;
+    width: 100%;
+    margin-bottom: var(--second-offset);
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__input {
+    flex: 0 0 70%;
+    background-color: var(--color-background);
+    border: none;
+    font: var(--default-font);
+    padding: 5px 10px;
+    color: var(--main-color);
+
+    @include mobile {
+      padding: 10px 10px;
+    }
+  }
+
+  &__btn {
+    display: block;
+    border-radius: 0px;
+    flex: 0 0 30%;
+    padding: 0;
+    font: var(--default-font);
+
+    @include mobile {
+      padding: var(--small-offset);
+    }
+  }
+}
+
+.social-icons {
+  display: flex;
+  margin-bottom: var(--medium-offset);
+
+}
+
+
+
+.social-icon {
+  margin: 0 var(--small-offset);
+
+  svg {
+    width: 35px;
+    height: 35px;
+
+    path {
+      color: var(--color-nevada);
+      fill: var(--color-nevada);
+    }
+  }
+}
+
+.social-img {
+  fill: var(--color-nevada);
+  transition: all 0.3s ease-in-out 0s;
+
+  @include desktop {
+    &:hover {
+      fill: var(--color-main);
+    }
+  }
+
+}
+
+
+.copy-link {
+  color: var(--color-nevada);
+  transition: all 0.3s ease-in-out 0s;
+
+  @include desktop {
+    &:hover {
+      color: var(--color-main);
+    }
+  }
+}

@@ -1,0 +1,363 @@
+@import '../mixins';
+
+//
+.header {
+  background-color: var(--color-header);
+
+  &__container {
+    padding: var(--small-offset);
+    align-items: center;
+    z-index: 1100;
+
+
+  }
+
+  &__left {
+    grid-column: 3 span;
+
+    @include mobile {
+      grid-column: 1 span;
+    }
+  }
+
+
+  &__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 9 span;
+
+    @include tablet {
+      justify-content: flex-end;
+    }
+
+    @include mobile {
+      grid-column: 11 span;
+    }
+  }
+}
+
+.logo {
+  font: var(--logo-font);
+  color: var(--color-logo);
+  transition: color 0.3s ease 0s, font-size 0.3s ease 0s;
+  cursor: pointer;
+
+
+  @include desktop {
+    &:hover {
+      color: var(--color-logo-hover);
+    }
+  }
+
+  @include mobile {
+    display: none;
+  }
+
+
+}
+
+.logo--mobile {
+  display: none;
+  @include mobile{
+    display: block;
+  }
+}
+
+.nav {
+
+  &__list {
+    display: flex;
+
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: var(--second-offset);
+    padding: 10px 0px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include tablet {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    font: var(--bold-font);
+    color: var(--color-main);
+    transition: all 0.3s ease 0s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &--with-arrow {
+      padding-right: 20px;
+
+      &::after,
+      &::before {
+        content: '';
+        width: 8px;
+        height: 2px;
+        background-color: var(--color-main);
+        position: absolute;
+        top: 11px;
+        transition: all 0.3s ease-in-out 0s;
+
+        @include tablet {
+          width: 12px;
+          top: 15px;
+        }
+      }
+
+      &::after {
+        transform: rotate(-40deg);
+        right: 0;
+
+      }
+
+      &::before {
+        transform: rotate(40deg);
+        right: 6px;
+
+        @include tablet {
+          right: 8px;
+        }
+      }
+
+      @include tablet {
+        padding-right: 30px;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include desktop {
+      &:hover {
+        color: var(--color-main-hover);
+      }
+    }
+
+    @include tablet {
+      font: var(--burger-link);
+    }
+
+  }
+
+  &__arrow {
+    margin-top: 2px;
+    margin-left: var(--small-offset);
+  }
+
+  &__sublist {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 1050;
+    padding-top: 5px;
+    min-width: 200px;
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out 0s;
+    overflow: hidden;
+    box-shadow: 0px 10px 15px #000;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__subitem {
+    background-color: var(--color-accent);
+  }
+
+  &__sublink {
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--color-accent);
+    font: var(--bold-font);
+    color: var(--color-main);
+    transition: all 0.3s ease-in-out 0s;
+    z-index: 1090;
+
+    @include desktop {
+      &:hover {
+        background-color: var(--color-accent-hover);
+        color: var(--color-main-hover);
+      }
+    }
+
+    @include tablet {
+      font: var(--burger-link);
+      background-color: var(--color-cart);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--small-offset);
+  }
+
+  &__contact {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 15px;
+
+    a {
+      display: inline-flex;
+      padding: 15px;
+    }
+
+    @include tablet {
+      background-color: var(--color-cart);
+    }
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
+
+
+
+body._pc .nav__list>li:hover .nav__sublist {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+body._pc .nav__list>li:hover .nav__link--with-arrow::after {
+  transform: rotate(40deg);
+}
+
+body._pc .nav__list>li:hover .nav__link--with-arrow::before {
+  transform: rotate(-40deg);
+}
+
+body._touch .nav__list>li .nav__sublist.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+body._touch .nav__link--with-arrow.active::after {
+  transform: rotate(40deg);
+}
+
+body._touch .nav__link--with-arrow.active::before {
+  transform: rotate(-40deg);
+}
+
+.search {
+  fill: var(--color-main);
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      display: block;
+      width: 25px;
+      height: 25px;
+      object-fit: cover;
+
+      path {
+        transition: all 0.3s ease-in-out 0s;
+      }
+    }
+  }
+}
+
+.search__btn:hover {
+  fill: var(--color-main-hover);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  fill: var(--color-main);
+  transition: all 0.3s ease-in-out 0s;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include desktop {
+    &:hover {
+      fill: var(--color-main-hover);
+    }
+  }
+}
+
+.burger-btn {
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1190;
+
+  @include tablet {
+    display: flex;
+  }
+}
+
+.burger {
+
+  @include burger;
+  color: var(--color-burger);
+}
+
+
+
+.nav-btn {
+  grid-column: 2 span;
+}
+
+.header__nav.menu--active {
+
+  transform: translateY(0%);
+  transition: all 0.3s ease-in-out 0s;
+
+  @include mobile {
+    padding: 70px var(--medium-offset) 0px var(--medium-offset);
+  }
+}
+
+
+.header__nav {
+
+  @include tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-header);
+    z-index: 1150;
+    display: block;
+    padding: 70px var(--main-offset) 0px var(--main-offset);
+    transition: all 0.3s ease-in-out 0s;
+    transform: translateY(-100%);
+  }
+}

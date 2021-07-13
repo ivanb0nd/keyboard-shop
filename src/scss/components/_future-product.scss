@@ -1,0 +1,21 @@
+.future-product {
+  padding: var(--main-offset) 0;
+
+  &__title {
+    text-align: center;
+    margin: 0;
+    margin-bottom: var(--main-offset);
+    font: var(--subtitle);
+  }
+
+  &__list {
+    margin-bottom: var(--main-offset);
+
+  }
+}
+
+.btn-more {
+  display: block;
+  margin: 0 auto;
+
+}

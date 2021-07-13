@@ -1,0 +1,96 @@
+@import 'mixins';
+
+:root {
+
+  // container settings
+  --container-indent: 15px;
+  --filter-conteiner-indent: 30px;
+
+  // Colors
+  --color-black: #000;
+  --color-white: #fff;
+  --color-grey: #999;
+
+  --color-background: #232125;
+  --color-logo: #8fd3da;
+  --color-logo-hover: #5d979b;
+  --color-main: #e4e3e5;
+  --color-main-hover: #b7b6b8;
+  --color-accent: #23313d;
+  --color-accent-hover: #18222b;
+  --color-nevada: #5e737d;
+  --color-nevada-hover: #45555c;
+  --color-header: #101011;
+  --color-search-input: #191f22;
+  --color-cart:#232127;
+  --color-cart-hover:#1a181c;
+  --color-cart-side:#111013;
+  --color-heather:#afc2c9;
+  --color-burger: #d9dbdb;
+
+
+  // offsets, gaps
+  --grid-gap: 20px;
+  --card-padding: 60px;
+  --main-offset: 60px;
+  --second-offset: 40px;
+  --medium-offset: 20px;
+  --small-offset: 10px;
+
+  // fonts
+
+  --font-family: "Comfortaa", sans-serif;
+  --small-font: 300 12px / 140% var(--font-family);
+  --light-font: 300 14px / 140% var(--font-family);
+  --default-font: 400 16px / 140% var(--font-family);
+  --prehigh-font: 400 18px / 140% var(--font-family);
+  --bold-font: 700 16px / 140% var(--font-family);
+  --hight-bold-font: 700 18px / 140% var(--font-family);
+
+  --switch-filter-font: 400 14px / 140% var(--font-family);
+  --tooltip-product-font: 300 12px / 140% var(--font-family);
+  --title-font: 400 30px / 140% var(--font-family);
+  --logo-font: 700 40px / 140% var(--font-family);
+  --card-title: 400 20px / 140% var(--font-family);
+  --subtitle: 400 24px / 140% var(--font-family);
+  --counter-number: 700 10px / 140% var(--font-family);
+  --slider-text: 400 40px / 140% var(--font-family);
+  --filter-switcher-text: 400 18px / 100% var(--font-family);
+
+  // burger
+
+  --burger-width: 24px;
+  --burger-height: 18px;
+  --burger-line-height: 2px;
+}
+
+@include tablet {
+  :root {
+    --main-offset: 50px;
+
+    //font
+    --slider-text: 400 22px / 140% var(--font-family);
+    --subtitle: 400 20px / 140% var(--font-family);
+    --logo-font: 700 28px / 140% var(--font-family);
+    --prehigh-font: 400 14px / 140% var(--font-family);
+    --default-font: 400 14px / 140% var(--font-family);
+    --title-font: 400 24px / 140% var(--font-family);
+    --card-title: 400 16px / 140% var(--font-family);
+    --burger-link: 400 22px / 140% var(--font-family);
+  }
+}
+
+@include mobile {
+  :root {
+    --main-offset: 40px;
+    --grid-gap: 15px;
+    --second-offset: 34px;
+    --medium-offset: 16px;
+    --small-offset: 8px;
+
+    //font
+    --logo-font: 700 30px / 110% var(--font-family);
+    --slider-text: 400 16px / 140% var(--font-family);
+
+  }
+}
